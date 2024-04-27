@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://nextronick.github.io/word-of-the-day/",
+    origin: "https://nextronick.github.io",
     methods: ["GET", "POST"],
   })
 );
