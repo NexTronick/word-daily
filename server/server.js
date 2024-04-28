@@ -9,23 +9,21 @@ const { randomWordwithDictionary } = require("./controller/word");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(
-    cors({
-      credentials: true,
-      origin: process.env.CORS_ORIGIN,
-      methods: ["GET", "POST"],
-    })
-  );
-} else if (process.env.NODE_ENV === "development") {
-  app.use(
-    cors({
-      credentials: true,
-      origin: process.env.DEV_CORS_ORIGIN,
-      methods: ["GET", "POST"],
-    })
-  );
-}
+app.use(
+  cors({
+    credentials: true,
+    origin: process.env.CORS_ORIGIN,
+    methods: ["GET", "POST"],
+  })
+);
+
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: process.env.DEV_CORS_ORIGIN,
+//     methods: ["GET", "POST"],
+//   })
+// );
 app.get("/word-random", randomWordwithDictionary);
 
 app.listen(PORT, () => {
